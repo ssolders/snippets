@@ -2,9 +2,9 @@
 Putting a bunch of nice to have snippets here
 
 # Node
-   **pack-hard.js** - Script for running multiple commands (remove node_modules, install project, "npm run pack")
+   [**pack-hard.js**](https://github.com/ssolders/snippets/blob/master/node/pack-hard.js) - Script for running multiple commands (remove node_modules, install project, "npm run pack")
 
-   **build-hard.js** - Script for running multiple commands (remove node_modules, install project, "npm run build")
+   [**build-hard.js**](https://github.com/ssolders/snippets/blob/master/node/build-hard.js) - Script for running multiple commands (remove node_modules, install project, "npm run build")
 
 # JS
    **api.js** - Basic example setup for an api-file 
