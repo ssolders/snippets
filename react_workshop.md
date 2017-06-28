@@ -12,53 +12,56 @@ componentWillUpdate (here the state should be changed depending on props)
 render
 componentDidUpdate
 A React Component is updated when the properties (props) change from an external source or when the internal state is changed. State is changed using a shallow assign using this.setState({}).
-1.1 Update through state change
-class A extends React.Component {
-    constructor(...args) {
-        super(...args);
 
-        this.state = {
-            a: "a"
-        };
-    }
+## 1.1 Update through state change
+    class A extends React.Component {
+        constructor(...args) {
+            super(...args);
 
-    _function1() {
-        this.setState({
-            b: "b"
-        });
-        /*
-        {
-            a: "a",
-            b: "b"
+            this.state = {
+                a: "a"
+            };
         }
-        */
+
+        _function1() {
+            this.setState({
+                b: "b"
+            });
+            /*
+            {
+                a: "a",
+                b: "b"
+            }
+            */
+        }
+
+        render() {
+            return <div />;
+        }
     }
 
-    render() {
-        return <div />;
-    }
-}
-1.2 Update through props change
-class B extends React.Component {
-    constructor(...args) {
-        super(...args);
+## 1.2 Update through props change
+    class B extends React.Component {
+        constructor(...args) {
+            super(...args);
 
-        this.state = {
-            a: "a"
-        };
+            this.state = {
+                a: "a"
+            };
+        }
+
+        _function2() {
+            this.setState({
+                b: "b"
+            });
+        }
+
+        render() {
+            return <C a={this.state.a} b={this.state.b} />;
+        }
     }
 
-    _function2() {
-        this.setState({
-            b: "b"
-        });
-    }
-
-    render() {
-        return <C a={this.state.a} b={this.state.b} />;
-    }
-}
-2. ES6 modules import and export
+# 2. ES6 modules import and export
 In the new standard each js file is a module. Each module can import other modules and export functions or constants or anything else. Exports can be named or default. Named exports and default can be imported:
 // module A.js
 // named
@@ -75,13 +78,20 @@ export default function(param) {
 }
 
 // module B.js
+
 // default, (re-)named, named
+
+
 import multiplication, { c as constant, f } from "./A";
 
 console.log(c); // error c is not defined
+
 console.log(constant); // 2
+
 console.log(f()); // 2
+
 console.log(multiplication(5)); // 10
+
 3. Insight plugin structure
 Plugins are named insight-plugin-<NAME> where <NAME> needs to be unique and may not contain -.
 The plugin needs to be added to insight-cores package.json file and either installed or linked. (we will use link)
@@ -145,19 +155,22 @@ store.dispatch(action1());
 }
 */
 5. Workshop
-install node and npm, git
-install nodemon: npm install -g nodemon
-creds for gitlab (standard): nemuteph@gmx.de/nemuteph@gmx.de
-clone insight-core git clone https://gitlab.inoviagroup.se/insight-ui/insight-core.git
-clone insight-plugin-example git clone https://gitlab.inoviagroup.se/insight-ui/insight-plugin-example.git
-remove plugins from insight-core
-in insight-core copy ./config/templates/*docker1*.json to ./properties.json
-in insight-core run npm install
-in insight-plugin-example rename package name to insight-plugin-workshop
-in insight-plugin-example run npm install, npm link, npm run dev
-in insight core add insight-plugin-workshop to package.json and run npm link insight-plugin-workshop, run npm start
-see website and login using admin/admin
-navigate to: localhost:3000/en/workshop/route
+* install node and npm, git
+* install nodemon: npm install -g nodemon
+* creds for gitlab (standard): nemuteph@gmx.de/nemuteph@gmx.de
+* clone insight-core git clone https://gitlab.inoviagroup.se/insight-ui/insight-core.git
+* clone insight-plugin-example git clone https://gitlab.inoviagroup.se/insight-ui/insight-plugin-example.git
+* remove plugins from insight-core
+* in insight-core copy ./config/templates/*docker1*.json to ./properties.json
+* in insight-core run npm install
+* in insight-plugin-example rename package name to insight-plugin-workshop
+* in insight-plugin-example run npm install, npm link, npm run dev
+* in insight core add insight-plugin-workshop to package.json and run npm link insight-plugin-workshop, run npm start
+
+see website and login using admin/admin navigate to: localhost:3000/en/workshop/route
+
 see line 59. fix error
+
 exercise: add a parameter route
+
 parameter route should be reachable from route with dialog and input for name (see material ui)
